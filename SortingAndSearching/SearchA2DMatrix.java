@@ -1,6 +1,6 @@
 package SortingAndSearching;
 /*
-You are given an m x n integer matrix matrix with the following two properties:
+You are given an m x n integer matrix    with the following two properties:
 
 Each row is sorted in non-decreasing order.
 The first integer of each row is greater than the last integer of the previous row.
@@ -47,7 +47,7 @@ public class SearchA2DMatrix {
         int left=0,right =n*m-1;
         while (left<=right){
             int pivot = left + (right-left)/2;
-            int pivotVal = matrix[pivot/n][pivot%n];
+            int pivotVal = matrix[pivot/m][pivot%m];
             if(pivotVal==target)
                 return true;
             if(pivotVal> target)
@@ -59,8 +59,9 @@ public class SearchA2DMatrix {
     }
 
     public static void main(String[] args){
-        System.out.println(searchMatrix(new int[][]{{1,3,5,7},{10,11,16,20},{23,30,34,60}},13));//false
-        System.out.println(searchMatrix(new int[][]{{1,3,5,7},{10,11,16,20},{23,30,34,60}},3));//true
+       // System.out.println(searchMatrix(new int[][]{{1,3,5,7},{10,11,16,20},{23,30,34,60}},13));//false
+      //  System.out.println(searchMatrix(new int[][]{{1,3,5,7},{10,11,16,20},{23,30,34,60}},3));//true
+        System.out.println(searchMatrix(new int[][]{{1,1}},3));//true
 
     }
 }

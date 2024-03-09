@@ -76,4 +76,38 @@ public class MergeKSortedListProblem {
 
         return lists[0];
     }
+
+    /*
+     public ListNode mergeKLists(ListNode[] lists) {
+
+        PriorityQueue<ListNode> minHeap = createMinHeap(lists);
+        ListNode head = new ListNode(-1);
+         ListNode tail = head ;
+         while(!minHeap.isEmpty()){
+             ListNode node = minHeap.poll();
+                 tail.next = node;
+                 node = node.next;
+                 tail = tail.next;
+                 if(node!=null){
+                     minHeap.add(node);
+             }
+         }
+         return head.next;
+    }
+
+    public  PriorityQueue<ListNode> createMinHeap(ListNode[] lists){
+
+        PriorityQueue<ListNode> pq = new PriorityQueue<ListNode>(new Comparator<>(){
+            public int compare(ListNode l1, ListNode l2){
+                return l1.val-l2.val;
+            }
+        });
+
+        for(ListNode l : lists){
+            if(l!=null)
+            pq.add(l);
+        }
+     return pq;
+    }
+     */
 }

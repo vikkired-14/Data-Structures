@@ -60,3 +60,36 @@ class Worker implements Comparable<Worker> {
     }
 }
 
+/*
+public double mincostToHireWorkers(int[] quality, int[] wage, int k) {
+        int n = quality.length;
+        List<double[]> workers = new ArrayList<>();
+        Double minCost= Double.MAX_VALUE;
+        for(int i=0;i<n;i++){
+         workers.add(new double[]{(double)wage[i]/quality[i],(double)quality[i]});
+        }
+  workers.sort(new Comparator<double[]>() {
+            public int compare(double[] a, double[] b) {
+                return Double.compare(a[0], b[0]);
+            }
+        });
+
+          PriorityQueue<Double> pq = new PriorityQueue<>(new Comparator<Double>() {
+            public int compare(Double a, Double b) {
+                return Double.compare(b, a); // Compare in descending order
+            }
+        });
+        double total=0.0;
+        for(double[] work : workers){
+            total += work[1];
+            pq.offer(work[1]);
+            if(pq.size()>k){
+                total -= pq.poll();
+            }
+            if(pq.size()==k){
+             minCost=   Math.min(minCost,total*work[0]);
+            }
+        }
+        return minCost;
+    }
+ */

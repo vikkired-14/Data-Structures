@@ -31,7 +31,7 @@ public class ExpressiveWordsProblem {
     private boolean is(String currentWord, String targetWord) {
 
         int i = 0, j = 0;
-
+        //"heeellooo",  "hello"
         while (i < targetWord.length() && j < currentWord.length()) {
             if (targetWord.charAt(i) == currentWord.charAt(j)) {
                 int currentCount = 1;

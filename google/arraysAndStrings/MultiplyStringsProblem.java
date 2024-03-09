@@ -9,8 +9,8 @@ package google.arraysAndStrings;
 public class MultiplyStringsProblem {
 
     public static void main(String[] args) {
-        String num1 = "123";
-        String num2 = "456";
+        String num1 = "999";
+        String num2 = "999";
 
         System.out.println(multiply(num1, num2));
     }

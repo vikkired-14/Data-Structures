@@ -35,3 +35,20 @@ public class LengthOfLongestSubstringProblem {
         return ans;
     }
 }
+/*
+ public int lengthOfLongestSubstring(String s) {
+        int left=0,right=0;
+        int maxLen =0;
+        Set<Character> hashSet = new HashSet<>();
+        while(right<s.length()){
+           while(hashSet.contains(s.charAt(right))){
+               hashSet.remove(s.charAt(left));
+               left++;
+           }
+           hashSet.add(s.charAt(right));
+           maxLen = Math.max(maxLen,right-left+1);
+           right++;
+        }
+        return maxLen;
+    }
+ */

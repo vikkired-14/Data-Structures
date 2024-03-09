@@ -1,10 +1,13 @@
 package SortingAndSearching;
 /*
-Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
+Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example,
+the array nums = [0,1,2,4,5,6,7] might become:
 
 [4,5,6,7,0,1,2] if it was rotated 4 times.
 [0,1,2,4,5,6,7] if it was rotated 7 times.
-Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array
+ [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
 
 Given the sorted rotated array nums of unique elements, return the minimum element of this array.
 
@@ -66,3 +69,19 @@ public class FindMinimuminRotatedSortedArray {
         System.out.println(findMin(new int[]{4,5,6,7,0,1,2}));//0
     }
 }
+
+/*
+Choosing between `while(left <= right)` and `while(left < right)` depends on the specific problem and the conditions you want to satisfy.
+
+- If you want to include the boundary elements (`left` and `right`) in your search space and continue iterating until `left` and `right` become equal (i.e., until there's no element left to examine), you should use `while(left <= right)`. This is typically used when you want to search for an element in a range and you want to make sure that you've considered all possible elements in that range.
+
+- On the other hand, if you want to exclude the boundary elements and stop iterating when `left` becomes equal to `right` (i.e., when there's only one element left to examine), you should use `while(left < right)`. This is commonly used in binary search implementations when you want to narrow down the search space to a single element.
+
+Regarding the choice between `right = mid` and `right = mid - 1`, it also depends on the problem and the conditions you're checking. Here's a general guideline:
+
+- If you want to exclude the mid element from the next search space because you have already checked it and found it to be not the solution, you should use `right = mid - 1`. This is commonly used in scenarios where you're searching for the first occurrence of a target element or a condition.
+
+- If you want to include the mid element in the next search space because you haven't checked it yet and it could potentially be the solution, you should use `right = mid`. This is typically used when you're searching for the last occurrence of a target element or a condition.
+
+To remember when to use what, it's helpful to understand the problem requirements clearly and carefully analyze how the search space should be adjusted in each iteration based on those requirements. Practice and experience with different problems will also help in making the right choice instinctively.
+ */

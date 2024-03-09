@@ -62,4 +62,40 @@ public class MinimumWindowSubstringProblem {
 
         return "";
     }
+
+    /*
+     public String minWindow(String s, String t) {
+
+        int minLen=Integer.MAX_VALUE;
+        int minStart=0;
+        int left=0,right=0;
+        int[] windowFreq = new int[128];
+        int[] targetFreq = new int[128];
+        int minWindow=0;
+        for(char ch : t.toCharArray()){
+            targetFreq[ch]++;
+        }
+        while(right<s.length()){
+            char rtChar = s.charAt(right);
+            windowFreq[rtChar]++;
+            if(windowFreq[rtChar]<=targetFreq[rtChar])
+              minWindow++;
+            while(minWindow==t.length()){
+                if(right-left+1< minLen){
+                    minLen=right-left+1;
+                    minStart=left;
+                }
+                char ltChar =  s.charAt(left);
+                 windowFreq[ltChar]--;
+                 if( windowFreq[ltChar]<targetFreq[ltChar]){
+                     minWindow--;
+                 }
+                 left++;
+            }
+            right++;
+        }
+
+        return minLen == Integer.MAX_VALUE ? "" :s.substring(minStart,minStart+minLen);
+    }
+     */
 }

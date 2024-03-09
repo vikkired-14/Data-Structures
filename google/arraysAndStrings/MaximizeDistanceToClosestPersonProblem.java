@@ -92,7 +92,8 @@ public class MaximizeDistanceToClosestPersonProblem {
 
     /*
      * Algorithm:
-     * Construct left[i] and right[i] such that left[i] = left[i-1] + 1 if seat is empty and 0 if seat is full. (same for right[i])
+     * Construct left[i] and right[i] such that left[i] = left[i-1] + 1 if seat is empty and 0 if seat is full.
+     * (same for right[i])
      *
      * Time Complexity : O(N)
      * Space Complexity : O(N)
@@ -121,4 +122,24 @@ public class MaximizeDistanceToClosestPersonProblem {
 
         return ans;
     }
+
+    /*
+     public int maxDistToClosest(int[] seats) {
+      int maxDist=0;
+      int lastPos=-1;
+      for(int i=0;i<seats.length;i++){
+          if(seats[i]==1){
+              if(lastPos ==-1){
+                  maxDist = Math.max(maxDist,i);
+              }else{
+                   maxDist = Math.max(maxDist,(i-lastPos)/2);
+              }
+              lastPos = i;
+          }
+      }
+
+       maxDist = Math.max(maxDist,seats.length-1-lastPos);
+       return maxDist;
+    }
+     */
 }

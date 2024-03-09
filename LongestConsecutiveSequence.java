@@ -15,7 +15,7 @@ public class LongestConsecutiveSequence {
         for(int n : arr){
             if(!set.contains(n-1)){
                 int currNum =n;
-                int currStreak =1;
+                int currStreak =0;
                 while(set.contains(currNum+1)){
                     currStreak += 1;
                     currNum += 1;
@@ -27,7 +27,9 @@ public class LongestConsecutiveSequence {
     }
 
     public static void main(String[] args){
-        int[] arr = new int[]{0,3,7,2,5,8,4,6,0,1};
+        int[] arr = new int[]{0,3,7,2,5,8,4,6,0,1};//0,0,1,2,3,4,5,6,7,8
+        System.out.println(longestSequence(arr));
+        arr = new int[]{0,1,0};//0,0,1,
         System.out.println(longestSequence(arr));
     }
 }
