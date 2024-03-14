@@ -120,3 +120,111 @@ public class MostStonesRemovedwithSameRoworColumn {
         System.out.println("Output 3: " + result3); // Output: 0
     }
 }
+/*
+Approach 3: Optimized Depth-First Search (DFS)
+Time complexity: O(K)O(K)O(K)
+
+Building the graph will need O(N)O(N)O(N). During the DFS traversal, each stone only is visited once. This is because we mark each stone(from 0 to 2 * K + 1) as visited as soon as we see it, and then we only visit stones that are not marked as visited. In addition, when we iterate over the edge list of each stone, we look at each edge once thus it will cost O(E)O(E)O(E). The total cost will be O(N+K)O(N + K)O(N+K) which can be written as O(K)O(K)O(K) as we know N≤KN \leq KN≤K.
+
+Space complexity: O(K)O(K)O(K)
+
+Building the adjacency list will take O(N)O(N)O(N) space. To keep track of visited vertices, an array of size O(K)O(K)O(K), is required. Also, the run-time stack for DFS will use O(K)O(K)O(K) space.
+public int removeStones(int[][] stones) {
+        int k =1001;
+        List<Integer>[] adj = new ArrayList[2*k+1];
+        for(int i=0;i<2*k+1;i++){
+            adj[i] = new ArrayList<>();
+        }
+        for(int[] stone: stones){
+            int x = stone[0];
+            int y = 1000+ stone[1];
+            adj[x].add(y);
+            adj[y].add(x);
+        }
+        int count=0;
+        boolean[] visited = new boolean[2*k+1];
+        for(int[] stone : stones){
+            if(!visited[stone[0]]){
+                count++;
+                dfs(visited,adj,stone[0]);
+            }
+        }
+        return stones.length-count;
+    }
+
+     public void dfs(boolean[] visited, List<Integer>[] adj,int x){
+        visited[x]=true;
+        for(Integer k : adj[x]){
+            if( !visited[k] && !adj[k].isEmpty()){
+                dfs(visited,adj,k);
+            }
+        }
+    }
+
+
+    union Find
+     public int removeStones(int[][] stones) {
+        int[] parent= new int[stones.length];
+        int[] rank = new int[stones.length];
+        for(int i=0;i<stones.length;i++){
+            parent[i]=i;
+            rank[i] =i;
+        }
+        int count = stones.length;
+        for(int i=0;i<stones.length;i++){
+             for(int j=1;j<stones.length;j++){
+                 if(isSameRowOrColoum(stones[i],stones[j])){
+                     count -= performUnion(i,j,parent,rank);
+                 }
+             }
+        }
+        return stones.length-count;
+    }
+
+   public int performUnion(int i,int j,int[] parent,int[] rank){
+       int xRoot = find(parent,i);
+       int yRoot = find(parent,j);
+       if(xRoot==yRoot)
+           return 0;
+       if(rank[xRoot]> rank[yRoot]){
+           parent[yRoot] = xRoot;
+
+       }else if(rank[xRoot]< rank[yRoot]){
+            parent[xRoot] = yRoot;
+       }else{
+            parent[yRoot] = xRoot;
+           rank[xRoot] += rank[yRoot];
+       }
+       return 1;
+   }
+
+    public int find(int[] parent,int i){
+        if(parent[i]==i)
+            return parent[i];
+        return find(parent,parent[i]);
+    }
+
+    public boolean isSameRowOrColoum(int[] stone1,int[] stone2){
+        if(stone1[0]==stone2[0] || stone1[1]==stone2[1])
+            return true;
+        return false;
+    }
+
+    Here NNN is the Number of stones.
+
+Time complexity: O(N2⋅α(N))O( N^2 \cdot \alpha(N))O(N
+2
+ ⋅α(N))
+
+The amortized time complexity for each union-find operation is O(α(N))O(\alpha(N))O(α(N)), where α\alphaα is The Inverse Ackermann Function, this is because we have used union by size as well as path compression in the DSU implementation.
+
+Initializing the rep and size will take O(N)O(N)O(N) time. We then iterate over all the O(N2)O(N^2)O(N
+2
+ ) pairs and for each pair, the performUnion function will take O(α(n))O(\alpha(n))O(α(n)) time, hence the total time complexity is equal to O(N2⋅α(n))O( N^2 \cdot \alpha(n))O(N
+2
+ ⋅α(n)).
+
+Space complexity: O(N)O(N)O(N)
+
+Storing the representative/immediate-parents and sizes of NNN stones takes O(N)O(N)O(N) space.
+ */

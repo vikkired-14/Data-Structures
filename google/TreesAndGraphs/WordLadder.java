@@ -36,44 +36,48 @@ All the words in wordList are unique.
  */
 public class WordLadder {
     public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
-      Set<String> wordSet = new HashSet<>(wordList);
-      Set<String> beginSet = new HashSet<>();
-      Set<String> endSet = new HashSet<>();
-      Set<String> visited = new HashSet<>();
-      Set<String> nextSet = new HashSet<>();
-      beginSet.add(beginWord);
-      endSet.add(endWord);
-      int count=1;
-      while (!beginSet.isEmpty() && !endSet.isEmpty()){
+        Set<String> wordSet = new HashSet<>(wordList);
+        Set<String> beginSet = new HashSet<>();
+        Set<String> endSet = new HashSet<>();
+        Set<String> visited = new HashSet<>();
+        if(!wordSet.contains(endWord))
+            return 0;
+        beginSet.add(beginWord);
+        endSet.add(endWord);
+        int count=1;
+        while(!beginSet.isEmpty() && !endSet.isEmpty()){
+            if(beginSet.size()> endSet.size()){
+                Set<String> temp = beginSet;
+                beginSet = endSet;
+                endSet = temp;
+            }
+            Set<String> nextSet = new HashSet<>();
+            for(String word: beginSet){
+                char[] wordCharArray = word.toCharArray();
+                for( int i=0;i<wordCharArray.length;i++){
+                    char ch = wordCharArray[i];
+                    for(char c='a';c<='z';c++){
+                        if(ch==c)
+                            continue;
+                        wordCharArray[i]= c;
+                        String newWord = new String(wordCharArray);
+                        if(endSet.contains(newWord)){
+                            return count+1;
+                        }
+                        if(!visited.contains(newWord) && wordSet.contains(newWord)){
+                            visited.add(newWord);
+                            nextSet.add(newWord);
+                        }
 
-          if(beginSet.size()> endSet.size()){
-              Set<String> temp = beginSet;
-              beginSet = endSet;
-              endSet = temp;
-          }
-          for(String word : beginSet){
-              char[] charArray = word.toCharArray();
-              for(int i=0;i<charArray.length;i++){
-                  char ch =charArray[i];
-                  for(char c ='a';c<='z';c++){
-                      if(ch==c)
-                          continue;
-                      charArray[i] = c;
-                      String newWord = new String(charArray);
-                      if(endWord.contains(newWord))
-                          return count+1;
-                      if(!visited.contains(newWord) && wordSet.contains(newWord)){
-                          nextSet.add(newWord);
-                          visited.add(newWord);
-                      }
-                  }
-                  charArray[i] = ch;
-              }
-          }
-          beginSet = nextSet;
-          count++;
-      }
-      return count;
+                    }
+
+                    wordCharArray[i]=ch ;
+                }
+            }
+            beginSet = nextSet;
+            count++;
+        }
+        return 0;
     }
 
 
