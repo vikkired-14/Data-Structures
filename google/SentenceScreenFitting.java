@@ -76,5 +76,25 @@ public class SentenceScreenFitting {
         input = new String[]{"a", "bcd", "e"};
         System.out.println(wordsTyping(input,3,6));
     }
-
+/*
+public int wordsTyping(String[] sentence, int rows, int cols) {
+   StringBuilder sb = new StringBuilder();
+   for(String str: sentence){
+    sb.append(str).append(" ");
+   }
+   String fullString = sb.toString();
+   int len = fullString.length();
+   int start =0;
+   for(int i=0;i<rows;i++){
+     start += cols;
+     if(fullString.charAt(start%len)==' '){
+        start++;
+     }else{
+        while(start>0 && fullString.charAt((start-1)%len)!=' ' )
+         start--;
+     }
+   }
+  return start/len;
+}
+ */
 }

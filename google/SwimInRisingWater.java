@@ -77,3 +77,31 @@ public class SwimInRisingWater {
                 {11,17,18,19,20},{10,9,8,7,6}}));
     }
 }
+/*
+
+        int n = grid.length;
+        Set<Integer> seen = new HashSet<>();
+        PriorityQueue<Integer>pq = new PriorityQueue<>((a,b)->grid[a/n][a%n]-grid[b/n][b%n]);
+        pq.offer(0);
+        seen.add(0);
+        int ans=0;
+        int[][] dirs = {{0,1},{0,-1},{1,0},{-1,0}};
+        while (!pq.isEmpty()){
+            int k = pq.poll();
+            int row = k/n;
+            int col = k%n;
+            ans = Math.max(ans,grid[row][col]);
+            if(row==n-1 && col==n-1)
+                return ans;
+            for(int[] dir: dirs){
+                int nrow = row+dir[0];
+                int ncol = col+dir[1];
+                int sum = nrow*n+ncol;
+                if(nrow<0 || nrow>= n|| ncol<0 || ncol>=n || seen.contains(sum))
+                    continue;
+                pq.offer(sum);
+                seen.add(sum);
+            }
+        }
+        return ans;
+ */

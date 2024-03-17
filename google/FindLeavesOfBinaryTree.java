@@ -5,6 +5,7 @@ import Trees.TreeNode;
 import java.util.*;
 
 /*
+https://leetcode.com/problems/find-leaves-of-binary-tree/description/
 Given the root of a binary tree, collect a tree's nodes as if you were doing this:
 
 Collect all the leaf nodes.
@@ -63,3 +64,25 @@ public class FindLeavesOfBinaryTree {
     }
 
 }
+/*
+
+         List<List<Integer>> res = new ArrayList<>();
+        if(root==null)
+            return  res;
+        getHeight(root,res);
+        return res;
+    }
+
+   public  int getHeight(TreeNode root, List<List<Integer>> res){
+        if(root==null)
+            return  -1;
+        int leftHeight = getHeight(root.left,res);
+        int rightHeight = getHeight(root.right,res);
+        int currHeight = Math.max(leftHeight,rightHeight)+1;
+        if(currHeight== res.size())
+            res.add(new ArrayList<>());
+            System.out.println(currHeight + ":"+ root.val);
+        res.get(currHeight).add(root.val);
+        return currHeight;
+    }
+ */

@@ -3,6 +3,7 @@ package google;
 import java.util.Arrays;
 
 /*
+https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/description/
 There are n people in a social group labeled from 0 to n - 1. You are given an array logs where logs[i] = [timestampi, xi, yi] indicates that xi and yi will be friends at the time timestampi.
 
 Friendship is symmetric. That means if a is friends with b, then b is friends with a. Also, person a is acquainted with a person b if a is friends with b, or a is a friend of someone acquainted with b.
