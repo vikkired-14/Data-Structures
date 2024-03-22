@@ -50,3 +50,30 @@ public class NextClosestTimeProblem {
         }
     }
 }
+/*
+public class Solution {
+public  String nextClosestTime(String time) {
+    int currTime = (Integer.parseInt(time.substring(0,2))*60);
+    currTime += Integer.parseInt(time.substring(3));
+    Set<Integer> allwoed = new HashSet<>();
+    for(char ch : time.toCharArray()){
+        if(ch!=':'){
+            allwoed.add(ch-'0');
+        }
+    }
+    while(true){
+        currTime = (currTime+1)%(24*60);
+        int[] digits = {currTime/60/10,currTime/60%10,currTime%60/10,currTime%60%10};
+      search:{
+        for(int digit: digits){
+            if(!allwoed.contains(digit))
+                break search;
+        }
+        return String.format("%02d:%02d",currTime/60,currTime%60);
+    }
+    }
+
+}
+
+}
+ */

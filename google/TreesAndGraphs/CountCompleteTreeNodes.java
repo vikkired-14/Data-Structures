@@ -83,5 +83,29 @@ public class CountCompleteTreeNodes {
         root.left.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
         System.out.println(countNodes(root));//6
+        System.out.println(countNodes2(root));//6
+    }
+
+
+    //Approch 2
+    public static int countNodes2(TreeNode root) {
+        if(root==null)
+            return 0;
+        TreeNode leftNode = root;
+        TreeNode rightNode = root;
+        int left =0;
+        int right =0;
+        while(leftNode!=null){
+            left++;
+            leftNode = leftNode.left;
+        }
+
+        while(rightNode!=null){
+            right++;
+            rightNode = rightNode.right;
+        }
+        if(left==right)
+            return (int)Math.pow(2,left)-1;
+        return 1+countNodes2(root.left) + countNodes2(root.right);
     }
 }
