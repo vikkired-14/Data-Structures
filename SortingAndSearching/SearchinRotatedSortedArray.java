@@ -44,6 +44,8 @@ public class SearchinRotatedSortedArray {
                 return 0;
             return -1;
         }
+//        Input: nums = [4,5,6,7,0,1,2], target = 0
+//        Output: 4
         int left=0,right= nums.length-1;
         while (left<=right){
             int mid = left + (right-left)/2;

@@ -52,6 +52,7 @@ public class FillingBookcaseShelves {
      return dp[n];
     }
 
+
     public static void main(String[] args){
        // books = [[1,1],[2,3],[2,3],[1,1],[1,1],[1,1],[1,2]], shelfWidth = 4
         //Output: 6

@@ -3,7 +3,7 @@ package google.arraysAndStrings;
 /*
  * Problem URL : https://leetcode.com/problems/jump-game/
  * */
-public class JumpGameProblem {
+public class  JumpGameProblem {
 
     public static void main(String[] args) {
         int[] nums = {2, 3, 1, 1, 4};
