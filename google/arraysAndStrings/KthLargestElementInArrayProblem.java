@@ -97,6 +97,10 @@ We create an array count with size O(m)O(m)O(m).
     public static int findKthLargest_approach2(int[] nums, int k) {
         int minValue = Integer.MAX_VALUE;
         int maxValue = Integer.MIN_VALUE;
+        for(int n : nums){
+            minValue = Math.min(minValue,n);
+            maxValue = Math.max(maxValue,n);
+        }
         int[] count = new int[maxValue-minValue+1];
         for(int num : nums){
             count[num-minValue]++;

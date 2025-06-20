@@ -1,5 +1,8 @@
 package google.arraysAndStrings;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
  * Problem URL : https://leetcode.com/problems/find-and-replace-in-string/
  * Input: s = "abcd", indices = [0, 2], sources = ["a", "cd"], targets = ["eee", "ffff"]
@@ -51,6 +54,26 @@ public class FindAndReplaceInStringProblem {
         }
 
         return builder.toString();
+    }
+
+    public String findReplaceString2(String s, int[] indices, String[] sources, String[] targets) {
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int idx=0;idx<indices.length;idx++){
+            if(s.startsWith(sources[idx],indices[idx])){
+                map.put(indices[idx],idx);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<s.length();){
+            if(map.containsKey(i)){
+                sb.append(targets[map.get(i)]);
+                i+= sources[map.get(i)].length();
+            }else{
+                sb.append(s.charAt(i));
+                i++;
+            }
+        }
+        return sb.toString();
     }
 }
 

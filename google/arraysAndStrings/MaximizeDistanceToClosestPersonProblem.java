@@ -27,6 +27,7 @@ public class MaximizeDistanceToClosestPersonProblem {
      * Space Complexity : O(1)
      * */
     public int maxDistToClosest_approach3(int[] seats) {
+// * Input: seats = [1,0,0,0,1,0,1]  Output: 2
 
         int k = 0;
         int ans = 0;

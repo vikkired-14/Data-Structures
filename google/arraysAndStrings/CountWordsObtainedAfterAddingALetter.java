@@ -66,7 +66,7 @@ public class CountWordsObtainedAfterAddingALetter {
         int t;
         do{
             t = Integer.lowestOneBit(y);
-            if(startWordSet.contains(t))
+            if(startWordSet.contains(x-t))
                 return true;
         }while((y-= t)!=0);
         return false;
@@ -75,7 +75,7 @@ public class CountWordsObtainedAfterAddingALetter {
     private static Integer wordToInt(String word) {
         int wordInt=0;
         for(char ch : word.toCharArray()){
-            wordInt += 1<<ch-'a';
+            wordInt += 1<<(ch-'a');
         }
         return wordInt;
     }
@@ -85,5 +85,7 @@ public class CountWordsObtainedAfterAddingALetter {
 //        Input: startWords = ["ant","act","tack"], targetWords = ["tack","act","acti"]
 //        Output: 2
         System.out.println(wordCount(new String[]{"ant","act","tack"},new String[]{"tack","act","acti"}));
+        System.out.println(wordCount(new String[]{"ab","a"},new String[]{"abc","abcd"}));
+
     }
 }
